@@ -6,7 +6,7 @@
  * from a specific category. The amount of posts can be
  * limited through the admin.
  *
- * @package _s
+ * @package imaga
  */
 
 // Set up fields.
@@ -14,28 +14,28 @@ $block_title = get_field( 'title' );
 $post_count  = get_field( 'number_of_posts' );
 $categories  = get_field( 'categories' );
 $tags        = get_field( 'tags' );
-$alignment   = _s_get_block_alignment( $block );
-$classes     = _s_get_block_classes( $block );
+$alignment   = imaga_get_block_alignment( $block );
+$classes     = imaga_get_block_classes( $block );
 
 // Variable to hold query args.
 $args = array();
 
 // Only if there are either categories or tags.
 if ( $categories || $tags ) {
-	$args = _s_get_recent_posts_query_arguments( $categories, $tags );
+	$args = imaga_get_recent_posts_query_arguments( $categories, $tags );
 }
 
 // Always merge in the number of posts.
 $args['posts_per_page'] = is_numeric( $post_count ) ? $post_count : 3;
 
 // Get the recent posts.
-$recent_posts = _s_get_recent_posts( $args );
+$recent_posts = imaga_get_recent_posts( $args );
 
 // Display section if we have any posts.
 if ( $recent_posts->have_posts() ) :
 
 	// Start a <container> with possible block options.
-	_s_display_block_options(
+	imaga_display_block_options(
 		array(
 			'block'     => $block,
 			'container' => 'section', // Any HTML5 container: section, div, etc...
@@ -58,11 +58,11 @@ if ( $recent_posts->have_posts() ) :
 				$recent_posts->the_post();
 
 				// Display a card.
-				_s_display_card(
+				imaga_display_card(
 					array(
 						'title' => get_the_title(),
 						'image' => wp_get_attachment_image( get_post_thumbnail_id(), 'medium', false, array( 'card-image' ) ),
-						'text'  => _s_get_the_excerpt(
+						'text'  => imaga_get_the_excerpt(
 							array(
 								'length' => 20,
 								'more'   => '...',

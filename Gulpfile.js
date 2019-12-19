@@ -282,7 +282,7 @@ gulp.task( 'uglify', [ 'concat' ], () =>
  * Delete the theme's .pot before we create a new one.
  */
 gulp.task( 'clean:pot', () =>
-	del( [ 'languages/_s.pot' ] )
+	del( [ 'languages/imaga.pot' ] )
 );
 
 /**
@@ -295,10 +295,10 @@ gulp.task( 'wp-pot', [ 'clean:pot' ], () =>
 		.pipe( plumber( {'errorHandler': handleErrors} ) )
 		.pipe( sort() )
 		.pipe( wpPot( {
-			'domain': '_s',
-			'package': '_s'
+			'domain': 'imaga',
+			'package': 'imaga'
 		} ) )
-		.pipe( gulp.dest( 'languages/_s.pot' ) )
+		.pipe( gulp.dest( 'languages/imaga.pot' ) )
 );
 
 /**
@@ -364,7 +364,7 @@ gulp.task( 'watch', function() {
 	browserSync( {
 		'open': false, // Open project in a new tab?
 		'injectChanges': true,  // Auto inject changes instead of full reload.
-		'proxy': 'https://wds.test', // Use https://_s.test:3000 to use BrowserSync.
+		'proxy': 'https://imaga.local', // Use https://_s.test:3000 to use BrowserSync.
 		'watchOptions': {
 			'debounceDelay': 500 // Wait 500ms second before injecting.
 		}

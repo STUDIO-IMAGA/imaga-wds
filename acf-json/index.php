@@ -4,7 +4,7 @@
  *
  * @link https://developer.wordpress.org/themes/basics/template-files/#template-partials
  *
- * @package _s
+ * @package imaga
  */
 
 if ( ! defined( 'ABSPATH' ) ) {

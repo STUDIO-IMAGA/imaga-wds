@@ -4,7 +4,7 @@
  *
  * File for custom scaffolding Library functionality.
  *
- * @package _s
+ * @package imaga
  */
 
 /**
@@ -13,7 +13,7 @@
  * @param array $args The scaffolding defaults.
  * @author Greg Rickaby Carrie Forde
  */
-function _s_display_scaffolding_section( $args = array() ) {
+function imaga_display_scaffolding_section( $args = array() ) {
 
 	// Set defaults.
 	$defaults = array(
@@ -29,7 +29,7 @@ function _s_display_scaffolding_section( $args = array() ) {
 	$args = wp_parse_args( $args, $defaults );
 
 	// Grab our allowed tags.
-	$allowed_tags = _s_scaffolding_allowed_html();
+	$allowed_tags = imaga_scaffolding_allowed_html();
 
 	// Add a unique class to the wrapper.
 	$class = 'scaffolding-' . str_replace( ' ', '-', strtolower( $args['title'] ) ); ?>
@@ -39,7 +39,7 @@ function _s_display_scaffolding_section( $args = array() ) {
 		<?php if ( $args['title'] ) : ?>
 		<header class="scaffolding-document-header display-flex flex-start space-between">
 			<h3 class="scaffolding-document-title"><?php echo esc_html( $args['title'] ); ?></h3>
-			<button type="button" class="scaffolding-button"><?php esc_html_e( 'Details', '_s' ); ?></button>
+			<button type="button" class="scaffolding-button"><?php esc_html_e( 'Details', 'imaga' ); ?></button>
 		</header><!-- .scaffolding-document-header -->
 		<?php endif; ?>
 
@@ -48,19 +48,19 @@ function _s_display_scaffolding_section( $args = array() ) {
 			<div class="scaffolding-document-details">
 
 			<?php if ( $args['description'] ) : ?>
-				<p><strong><?php esc_html_e( 'Description', '_s' ); ?>:</strong></p>
+				<p><strong><?php esc_html_e( 'Description', 'imaga' ); ?>:</strong></p>
 				<p class="scaffolding-document-description"><?php echo esc_html( $args['description'] ); ?></p>
 			<?php endif; ?>
 
 			<?php if ( $args['parameters'] ) : ?>
-				<p><strong><?php esc_html_e( 'Parameters', '_s' ); ?>:</strong></p>
+				<p><strong><?php esc_html_e( 'Parameters', 'imaga' ); ?>:</strong></p>
 				<?php foreach ( $args['parameters'] as $key => $value ) : ?>
 					<p><code><?php echo esc_html( $key ); ?></code> <?php echo esc_html( $value ); ?></p>
 				<?php endforeach; ?>
 			<?php endif; ?>
 
 			<?php if ( $args['arguments'] ) : ?>
-				<p><strong><?php esc_html_e( 'Arguments', '_s' ); ?>:</strong></p>
+				<p><strong><?php esc_html_e( 'Arguments', 'imaga' ); ?>:</strong></p>
 				<?php foreach ( $args['arguments'] as $key => $value ) : ?>
 					<p><code><?php echo esc_html( $key ); ?></code> <?php echo esc_html( $value ); ?></p>
 				<?php endforeach; ?>
@@ -71,12 +71,12 @@ function _s_display_scaffolding_section( $args = array() ) {
 			<div class="scaffolding-document-usage">
 
 			<?php if ( $args['usage'] ) : ?>
-				<p><strong><?php esc_html_e( 'Usage', '_s' ); ?>:</strong></p>
+				<p><strong><?php esc_html_e( 'Usage', 'imaga' ); ?>:</strong></p>
 				<pre><?php echo esc_html( $args['usage'] ); ?></pre>
 			<?php endif; ?>
 
 			<?php if ( $args['output'] ) : ?>
-				<p><strong><?php esc_html_e( 'HTML Output', '_s' ); ?>:</strong></p>
+				<p><strong><?php esc_html_e( 'HTML Output', 'imaga' ); ?>:</strong></p>
 				<pre><?php echo esc_html( $args['output'] ); ?></pre>
 			<?php endif; ?>
 
@@ -101,7 +101,7 @@ function _s_display_scaffolding_section( $args = array() ) {
  * @return array The allowed tags and attributes.
  * @author Carrie Forde
  */
-function _s_scaffolding_allowed_html() {
+function imaga_scaffolding_allowed_html() {
 
 	// Add additional HTML tags to the wp_kses() allowed html filter.
 	$allowed_tags = array_merge(
@@ -162,7 +162,7 @@ function _s_scaffolding_allowed_html() {
  * @param array $args The array of colors or fonts.
  * @author Carrie Forde
  */
-function _s_display_global_scaffolding_section( $args = array() ) {
+function imaga_display_global_scaffolding_section( $args = array() ) {
 
 	// Set defaults.
 	$defaults = array(
@@ -242,7 +242,7 @@ function _s_display_global_scaffolding_section( $args = array() ) {
  *
  * @author Carrie Forde
  */
-function _s_hook_theme_scaffolding() {
+function imaga_hook_theme_scaffolding() {
 
 	$template_dir = 'template-parts/scaffolding/scaffolding';
 
@@ -254,4 +254,4 @@ function _s_hook_theme_scaffolding() {
 	get_template_part( $template_dir, 'forms' );
 	get_template_part( $template_dir, 'elements' );
 }
-add_action( '_s_scaffolding_content', '_s_hook_theme_scaffolding' );
+add_action( 'imaga_scaffolding_content', 'imaga_hook_theme_scaffolding' );

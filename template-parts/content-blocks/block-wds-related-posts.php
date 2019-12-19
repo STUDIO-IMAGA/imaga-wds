@@ -2,20 +2,20 @@
 /**
  * The template used for displaying related posts.
  *
- * @package _s
+ * @package imaga
  */
 
 // Set up fields.
 $block_title   = get_field( 'title' );
 $related_posts = get_field( 'related_posts' );
-$alignment     = _s_get_block_alignment( $block );
-$classes       = _s_get_block_classes( $block );
+$alignment     = imaga_get_block_alignment( $block );
+$classes       = imaga_get_block_classes( $block );
 
 // Display section if we have any posts.
 if ( $related_posts ) :
 
 	// Start a <container> with possible block options.
-	_s_display_block_options(
+	imaga_display_block_options(
 		array(
 			'block'     => $block,
 			'container' => 'section', // Any HTML5 container: section, div, etc...
@@ -40,11 +40,11 @@ if ( $related_posts ) :
 				setup_postdata( $post );
 
 				// Display a card.
-				_s_display_card(
+				imaga_display_card(
 					array(
 						'title' => get_the_title( $post ),
 						'image' => wp_get_attachment_image( get_post_thumbnail_id( $post->ID ), 'medium', false, array( 'card-image' ) ),
-						'text'  => _s_get_the_excerpt(
+						'text'  => imaga_get_the_excerpt(
 							array(
 								'length' => 20,
 								'more'   => '...',
@@ -64,7 +64,7 @@ if ( $related_posts ) :
 <?php elseif ( ! $related_posts && is_admin() ) : ?>
 	<?php
 	// Start a <container> with possible block options.
-	_s_display_block_options(
+	imaga_display_block_options(
 		array(
 			'block'     => $block,
 			'container' => 'section', // Any HTML5 container: section, div, etc...

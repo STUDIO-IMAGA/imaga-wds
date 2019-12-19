@@ -4,7 +4,7 @@
  *
  * @link https://codex.wordpress.org/Creating_an_Error_404_Page
  *
- * @package _s
+ * @package imaga
  */
 
 get_header(); ?>
@@ -13,12 +13,12 @@ get_header(); ?>
 
 		<section class="error-404 not-found container">
 			<header class="page-header">
-				<h1 class="page-title"><?php esc_html_e( 'Sorry, this page doesn\'t exist.', '_s' ); ?></h1>
+				<h1 class="page-title"><?php esc_html_e( 'Sorry, this page doesn\'t exist.', 'imaga' ); ?></h1>
 			</header><!-- .page-header -->
 
 			<div class="page-content">
 
-				<p><?php esc_html_e( 'It seems we can\'t find what you\'re looking for. Perhaps searching can help.', '_s' ); ?></p>
+				<p><?php esc_html_e( 'It seems we can\'t find what you\'re looking for. Perhaps searching can help.', 'imaga' ); ?></p>
 
 				<?php get_search_form(); ?>
 

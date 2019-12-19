@@ -2,17 +2,17 @@
 /**
  * The template used for displaying Buttons in the scaffolding library.
  *
- * @package _s
+ * @package imaga
  */
 
 ?>
 
 <section class="section-scaffolding">
 
-	<h2 class="scaffolding-heading"><?php esc_html_e( 'Buttons', '_s' ); ?></h2>
+	<h2 class="scaffolding-heading"><?php esc_html_e( 'Buttons', 'imaga' ); ?></h2>
 	<?php
 		// Button.
-		_s_display_scaffolding_section(
+		imaga_display_scaffolding_section(
 			array(
 				'title'       => 'Button',
 				'description' => 'Display a button.',

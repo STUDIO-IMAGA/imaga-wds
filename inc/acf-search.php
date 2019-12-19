@@ -5,7 +5,7 @@
  * Extend WordPress search to include custom fields.
  * https://adambalee.com
  *
- * @package _s
+ * @package imaga
  */
 
 /**
@@ -16,7 +16,7 @@
  * @return $join The updated query.
  * @author Corey Collins
  */
-function _s_search_join( $join ) {
+function imaga_search_join( $join ) {
 	global $wpdb;
 
 	if ( is_search() ) {
@@ -25,7 +25,7 @@ function _s_search_join( $join ) {
 
 	return $join;
 }
-add_filter( 'posts_join', '_s_search_join' );
+add_filter( 'posts_join', 'imaga_search_join' );
 
 /**
  * Modify the search query with posts_where.
@@ -35,7 +35,7 @@ add_filter( 'posts_join', '_s_search_join' );
  * @return $where The updated query.
  * @author Corey Collins
  */
-function _s_search_where( $where ) {
+function imaga_search_where( $where ) {
 	global $pagenow, $wpdb;
 
 	if ( is_search() ) {
@@ -48,7 +48,7 @@ function _s_search_where( $where ) {
 
 	return $where;
 }
-add_filter( 'posts_where', '_s_search_where' );
+add_filter( 'posts_where', 'imaga_search_where' );
 
 /**
  * Prevent duplicates.
@@ -58,7 +58,7 @@ add_filter( 'posts_where', '_s_search_where' );
  * @return $where The updated query.
  * @author Corey Collins
  */
-function _s_search_distinct( $where ) {
+function imaga_search_distinct( $where ) {
 	global $wpdb;
 
 	if ( is_search() ) {
@@ -67,4 +67,4 @@ function _s_search_distinct( $where ) {
 
 	return $where;
 }
-add_filter( 'posts_distinct', '_s_search_distinct' );
+add_filter( 'posts_distinct', 'imaga_search_distinct' );

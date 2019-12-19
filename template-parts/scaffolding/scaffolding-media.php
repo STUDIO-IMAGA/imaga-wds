@@ -2,7 +2,7 @@
 /**
  * The template used for displaying media in the scaffolding library.
  *
- * @package _s
+ * @package imaga
  */
 
 global $wp_embed;
@@ -10,11 +10,11 @@ global $wp_embed;
 
 <section class="section-scaffolding">
 
-	<h2 class="scaffolding-heading"><?php esc_html_e( 'Media', '_s' ); ?></h2>
+	<h2 class="scaffolding-heading"><?php esc_html_e( 'Media', 'imaga' ); ?></h2>
 
 	<?php
 	// Right-aligned Image.
-	_s_display_scaffolding_section(
+	imaga_display_scaffolding_section(
 		array(
 			'title'       => 'Right-aligned Image',
 			'description' => 'Display a right-aligned image.',
@@ -30,7 +30,7 @@ global $wp_embed;
 	);
 
 	// Left-aligned Image.
-	_s_display_scaffolding_section(
+	imaga_display_scaffolding_section(
 		array(
 			'title'       => 'Left-aligned Image',
 			'description' => 'Display a left-aligned image.',
@@ -46,7 +46,7 @@ global $wp_embed;
 	);
 
 	// Center-aligned Image.
-	_s_display_scaffolding_section(
+	imaga_display_scaffolding_section(
 		array(
 			'title'       => 'Center-aligned Image',
 			'description' => 'Display a center-aligned image.',
@@ -62,7 +62,7 @@ global $wp_embed;
 	);
 
 	// Image with caption.
-	_s_display_scaffolding_section(
+	imaga_display_scaffolding_section(
 		array(
 			'title'       => 'Image with Caption',
 			'description' => 'Display an image with a caption.',
@@ -78,7 +78,7 @@ global $wp_embed;
 	);
 
 	// Youtube embed.
-	_s_display_scaffolding_section(
+	imaga_display_scaffolding_section(
 		array(
 			'title'       => 'Youtube Embed',
 			'description' => 'Display a youtube video.',
@@ -88,7 +88,7 @@ global $wp_embed;
 	);
 
 	// Youtube embed.
-	_s_display_scaffolding_section(
+	imaga_display_scaffolding_section(
 		array(
 			'title'       => 'Vimeo Embed',
 			'description' => 'Display a vimeo video.',

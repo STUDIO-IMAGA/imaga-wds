@@ -2,7 +2,7 @@
 /**
  *  The template used for displaying fifty/fifty text/media.
  *
- * @package _s
+ * @package imaga
  */
 
 // Set up fields.
@@ -11,7 +11,7 @@ $image_data = get_field( 'media_right' );
 $text       = get_field( 'text_primary' );
 
 // Start a <container> with a possible media background.
-_s_display_block_options(
+imaga_display_block_options(
 	array(
 		'block'     => $fifty_block,
 		'container' => 'section', // Any HTML5 container: section, div, etc...
@@ -22,7 +22,7 @@ _s_display_block_options(
 	<div class="display-flex container">
 
 		<div class="half">
-			<?php echo _s_get_the_content( $text ); // WPCS: XSS OK. ?>
+			<?php echo imaga_get_the_content( $text ); // WPCS: XSS OK. ?>
 		</div>
 
 		<div class="half">

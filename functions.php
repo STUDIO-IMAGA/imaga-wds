@@ -4,10 +4,10 @@
  *
  * @link https://developer.wordpress.org/themes/basics/theme-functions/
  *
- * @package _s
+ * @package imaga
  */
 
-if ( ! function_exists( '_s_setup' ) ) :
+if ( ! function_exists( 'imaga_setup' ) ) :
 	/**
 	 * Sets up theme defaults and registers support for various WordPress features.
 	 *
@@ -17,16 +17,16 @@ if ( ! function_exists( '_s_setup' ) ) :
 	 *
 	 * @author WDS
 	 */
-	function _s_setup() {
+	function imaga_setup() {
 		/**
 		 * Make theme available for translation.
 		 * Translations can be filed in the /languages/ directory.
 		 * If you're building a theme based on _s, use a find and replace
-		 * to change '_s' to the name of your theme in all the template files.
+		 * to change 'imaga' to the name of your theme in all the template files.
 		 * You will also need to update the Gulpfile with the new text domain
 		 * and matching destination POT file.
 		 */
-		load_theme_textdomain( '_s', get_template_directory() . '/languages' );
+		load_theme_textdomain( 'imaga', get_template_directory() . '/languages' );
 
 		// Add default posts and comments RSS feed links to head.
 		add_theme_support( 'automatic-feed-links' );
@@ -50,8 +50,8 @@ if ( ! function_exists( '_s_setup' ) ) :
 		// Register navigation menus.
 		register_nav_menus(
 			array(
-				'primary' => esc_html__( 'Primary Menu', '_s' ),
-				'mobile'  => esc_html__( 'Mobile Menu', '_s' ),
+				'primary' => esc_html__( 'Primary Menu', 'imaga' ),
+				'mobile'  => esc_html__( 'Mobile Menu', 'imaga' ),
 			)
 		);
 
@@ -74,7 +74,7 @@ if ( ! function_exists( '_s_setup' ) ) :
 		add_theme_support(
 			'custom-background',
 			apply_filters(
-				'_s_custom_background_args',
+				'imaga_custom_background_args',
 				array(
 					'default-color' => 'ffffff',
 					'default-image' => '',
@@ -98,7 +98,7 @@ if ( ! function_exists( '_s_setup' ) ) :
 		add_theme_support( 'customize-selective-refresh-widgets' );
 
 		// Gutenberg color palette support.
-		add_theme_support( 'editor-color-palette', _s_get_theme_colors_gutenberg() );
+		add_theme_support( 'editor-color-palette', imaga_get_theme_colors_gutenberg() );
 
 		// Gutenberg support for full-width/wide alignment of supported blocks.
 		add_theme_support( 'align-wide' );
@@ -108,22 +108,22 @@ if ( ! function_exists( '_s_setup' ) ) :
 			'editor-font-sizes',
 			array(
 				array(
-					'name' => __( 'Small', '_s' ),
+					'name' => __( 'Small', 'imaga' ),
 					'size' => 12,
 					'slug' => 'small',
 				),
 				array(
-					'name' => __( 'Normal', '_s' ),
+					'name' => __( 'Normal', 'imaga' ),
 					'size' => 16,
 					'slug' => 'normal',
 				),
 				array(
-					'name' => __( 'Large', '_s' ),
+					'name' => __( 'Large', 'imaga' ),
 					'size' => 36,
 					'slug' => 'large',
 				),
 				array(
-					'name' => __( 'Huge', '_s' ),
+					'name' => __( 'Huge', 'imaga' ),
 					'size' => 50,
 					'slug' => 'huge',
 				),
@@ -137,8 +137,8 @@ if ( ! function_exists( '_s_setup' ) ) :
 		// Gutenberg responsive embed support.
 		add_theme_support( 'responsive-embeds' );
 	}
-endif; // _s_setup.
-add_action( 'after_setup_theme', '_s_setup' );
+endif; // imaga_setup.
+add_action( 'after_setup_theme', 'imaga_setup' );
 
 /**
  * Set the content width in pixels, based on the theme's design and stylesheet.
@@ -148,10 +148,10 @@ add_action( 'after_setup_theme', '_s_setup' );
  * @global int $content_width
  * @author WDS
  */
-function _s_content_width() {
-	$GLOBALS['content_width'] = apply_filters( '_s_content_width', 640 );
+function imaga_content_width() {
+	$GLOBALS['content_width'] = apply_filters( 'imaga_content_width', 640 );
 }
-add_action( 'after_setup_theme', '_s_content_width', 0 );
+add_action( 'after_setup_theme', 'imaga_content_width', 0 );
 
 /**
  * Register widget area.
@@ -159,11 +159,11 @@ add_action( 'after_setup_theme', '_s_content_width', 0 );
  * @link https://developer.wordpress.org/themes/functionality/sidebars/#registering-a-sidebar
  * @author WDS
  */
-function _s_widgets_init() {
+function imaga_widgets_init() {
 
 	// Define sidebars.
 	$sidebars = array(
-		'sidebar-1' => esc_html__( 'Sidebar 1', '_s' ),
+		'sidebar-1' => esc_html__( 'Sidebar 1', 'imaga' ),
 	);
 
 	// Loop through each sidebar and register.
@@ -172,7 +172,7 @@ function _s_widgets_init() {
 			array(
 				'name'          => $sidebar_name,
 				'id'            => $sidebar_id,
-				'description'   => /* translators: the sidebar name */ sprintf( esc_html__( 'Widget area for %s', '_s' ), $sidebar_name ),
+				'description'   => /* translators: the sidebar name */ sprintf( esc_html__( 'Widget area for %s', 'imaga' ), $sidebar_name ),
 				'before_widget' => '<aside class="widget %2$s">',
 				'after_widget'  => '</aside>',
 				'before_title'  => '<h2 class="widget-title">',
@@ -182,7 +182,7 @@ function _s_widgets_init() {
 	}
 
 }
-add_action( 'widgets_init', '_s_widgets_init' );
+add_action( 'widgets_init', 'imaga_widgets_init' );
 
 /**
  * Custom template tags for this theme.

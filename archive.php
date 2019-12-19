@@ -4,7 +4,7 @@
  *
  * @link https://codex.wordpress.org/Template_Hierarchy
  *
- * @package _s
+ * @package imaga
  */
 
 get_header(); ?>
@@ -34,7 +34,7 @@ get_header(); ?>
 
 			endwhile;
 
-			_s_display_numeric_pagination();
+			imaga_display_numeric_pagination();
 
 		else :
 

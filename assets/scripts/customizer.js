@@ -19,9 +19,9 @@ window.CustomizerHeaderOptions = {};
 	app.cache = function() {
 		app.$c = {
 			window: $( window ),
-			headerButtonSelect: $( '#customize-control-_s_header_button select' ),
-			headerLinkButton: $( '#customize-control-_s_header_button_url' ),
-			headerLinkText: $( '#customize-control-_s_header_button_text' )
+			headerButtonSelect: $( '#customize-control-imaga_header_button select' ),
+			headerLinkButton: $( '#customize-control-imaga_header_button_url' ),
+			headerLinkText: $( '#customize-control-imaga_header_button_text' )
 		};
 	};
 

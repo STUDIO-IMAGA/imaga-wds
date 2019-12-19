@@ -2,15 +2,15 @@
 /**
  * The template used for displaying a caroursel.
  *
- * @package _s
+ * @package imaga
  */
 
-$alignment    = _s_get_block_alignment( $block );
-$classes      = _s_get_block_classes( $block );
+$alignment    = imaga_get_block_alignment( $block );
+$classes      = imaga_get_block_classes( $block );
 $classnames[] = 'content-block carousel-block' . $alignment . $classes;
 $classnames[] = get_sub_field( 'block_width' );
 
-_s_acf_gutenberg_display_admin_default_carousel( $block );
+imaga_acf_gutenberg_display_admin_default_carousel( $block );
 
 // Start repeater markup...
 if ( have_rows( 'carousel_slides' ) ) :
@@ -26,10 +26,10 @@ if ( have_rows( 'carousel_slides' ) ) :
 		$text          = get_sub_field( 'text' );
 		$button        = get_sub_field( 'button_link' );
 		$other_options = get_sub_field( 'other_options' ) ? get_sub_field( 'other_options' ) : get_field( 'other_options' )['other_options'];
-		$classname     = $color && _s_has_array_key( 'color_picker', $color ) ? 'has-font-color color-' . esc_attr( $color['color_picker'] ) : '';
+		$classname     = $color && imaga_has_array_key( 'color_picker', $color ) ? 'has-font-color color-' . esc_attr( $color['color_picker'] ) : '';
 
 		// If the block has expired, then bail!
-		if ( _s_has_block_expired(
+		if ( imaga_has_block_expired(
 			array(
 				'start_date' => $other_options['start_date'],
 				'end_date'   => $other_options['end_date'],
@@ -39,7 +39,7 @@ if ( have_rows( 'carousel_slides' ) ) :
 		}
 
 		// Start a <container> with possible block options.
-		_s_display_block_options(
+		imaga_display_block_options(
 			array(
 				'block'     => $block,
 				'container' => 'section', // Any HTML5 container: section, div, etc...
@@ -59,7 +59,7 @@ if ( have_rows( 'carousel_slides' ) ) :
 				<?php endif; ?>
 
 				<?php
-				_s_display_link(
+				imaga_display_link(
 					array(
 						'button' => true,
 						'class'  => 'button-slide',

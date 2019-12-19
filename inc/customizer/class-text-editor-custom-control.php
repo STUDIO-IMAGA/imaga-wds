@@ -2,7 +2,7 @@
 /**
  * Enable multiple WYSIWYG editors in the theme customizer.
  *
- * @package _s
+ * @package imaga
  */
 
 if ( class_exists( 'WP_Customize_Control' ) ) :

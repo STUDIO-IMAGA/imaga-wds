@@ -2,22 +2,22 @@
 /**
  * The template used for displaying icons in the scaffolding library.
  *
- * @package _s
+ * @package imaga
  */
 
 ?>
 
 <section class="section-scaffolding">
 
-	<h2 class="scaffolding-heading"><?php esc_html_e( 'Icons', '_s' ); ?></h2>
+	<h2 class="scaffolding-heading"><?php esc_html_e( 'Icons', 'imaga' ); ?></h2>
 
 	<?php
 	// SVG Icon.
-	_s_display_scaffolding_section(
+	imaga_display_scaffolding_section(
 		array(
 			'title'       => 'SVG',
 			'description' => 'Display inline SVGs.',
-			'usage'       => '<?php _s_display_svg( array(
+			'usage'       => '<?php imaga_display_svg( array(
 				\'icon\'   => \'facebook-square\',
 				\'title\'  => \'Facebook Icon\',
 				\'desc\'   => \'Facebook social icon svg\',
@@ -36,7 +36,7 @@
 				'height' => '(optional) The height of the icon. Default: none',
 				'width'  => '(optional) The width of the icon. Default: none',
 			),
-			'output'      => _s_get_svg(
+			'output'      => imaga_get_svg(
 				array(
 					'icon'   => 'facebook-square',
 					'title'  => 'Facebook Icon',

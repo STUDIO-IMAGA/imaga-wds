@@ -2,17 +2,17 @@
 /**
  * The template used for displaying a CTA block.
  *
- * @package _s
+ * @package imaga
  */
 
 // Set up fields.
 $block_title = get_field( 'title' );
 $text        = get_field( 'text' );
-$alignment   = _s_get_block_alignment( $block );
-$classes     = _s_get_block_classes( $block );
+$alignment   = imaga_get_block_alignment( $block );
+$classes     = imaga_get_block_classes( $block );
 
 // Start a <container> with possible block options.
-_s_display_block_options(
+imaga_display_block_options(
 	array(
 		'block'     => $block,
 		'container' => 'aside', // Any HTML5 container: section, div, etc...
@@ -32,7 +32,7 @@ _s_display_block_options(
 		</header>
 
 		<?php
-		_s_display_link(
+		imaga_display_link(
 			array(
 				'button' => true,
 				'class'  => 'button-cta',

@@ -4,16 +4,16 @@
  *
  * Eventually, some of the functionality here could be replaced by core features.
  *
- * @package _s
+ * @package imaga
  */
 
-if ( ! function_exists( '_s_posted_on' ) ) :
+if ( ! function_exists( 'imaga_posted_on' ) ) :
 	/**
 	 * Prints HTML with meta information for the current post-date/time and author.
 	 *
 	 * @author WDS
 	 */
-	function _s_posted_on() {
+	function imaga_posted_on() {
 		$time_string = '<time class="entry-date published updated" datetime="%1$s">%2$s</time>';
 		if ( get_the_time( 'U' ) !== get_the_modified_time( 'U' ) ) {
 			$time_string = '<time class="entry-date published" datetime="%1$s">%2$s</time><time class="updated" datetime="%3$s">%4$s</time>';
@@ -29,13 +29,13 @@ if ( ! function_exists( '_s_posted_on' ) ) :
 
 		$posted_on = sprintf(
 			/* translators: the date the post was published */
-			esc_html_x( 'Posted on %s', 'post date', '_s' ),
+			esc_html_x( 'Posted on %s', 'post date', 'imaga' ),
 			'<a href="' . esc_url( get_permalink() ) . '" rel="bookmark">' . $time_string . '</a>'
 		);
 
 		$byline = sprintf(
 			/* translators: the post author */
-			esc_html_x( 'by %s', 'post author', '_s' ),
+			esc_html_x( 'by %s', 'post author', 'imaga' ),
 			'<span class="author vcard"><a class="url fn n" href="' . esc_url( get_author_posts_url( get_the_author_meta( 'ID' ) ) ) . '">' . esc_html( get_the_author() ) . '</a></span>'
 		);
 
@@ -44,40 +44,40 @@ if ( ! function_exists( '_s_posted_on' ) ) :
 	}
 endif;
 
-if ( ! function_exists( '_s_entry_footer' ) ) :
+if ( ! function_exists( 'imaga_entry_footer' ) ) :
 	/**
 	 * Prints HTML with meta information for the categories, tags and comments.
 	 *
 	 * @author WDS
 	 */
-	function _s_entry_footer() {
+	function imaga_entry_footer() {
 		// Hide category and tag text for pages.
 		if ( 'post' === get_post_type() ) {
 			/* translators: used between list items, there is a space after the comma */
-			$categories_list = get_the_category_list( esc_html__( ', ', '_s' ) );
-			if ( $categories_list && _s_categorized_blog() ) {
+			$categories_list = get_the_category_list( esc_html__( ', ', 'imaga' ) );
+			if ( $categories_list && imaga_categorized_blog() ) {
 				/* translators: the post category */
-				printf( '<span class="cat-links">' . esc_html__( 'Posted in %1$s', '_s' ) . '</span>', $categories_list ); // WPCS: XSS OK.
+				printf( '<span class="cat-links">' . esc_html__( 'Posted in %1$s', 'imaga' ) . '</span>', $categories_list ); // WPCS: XSS OK.
 			}
 
 			/* translators: used between list items, there is a space after the comma */
-			$tags_list = get_the_tag_list( '', esc_html__( ', ', '_s' ) );
+			$tags_list = get_the_tag_list( '', esc_html__( ', ', 'imaga' ) );
 			if ( $tags_list ) {
 				/* translators: the post tags */
-				printf( '<span class="tags-links">' . esc_html__( 'Tagged %1$s', '_s' ) . '</span>', $tags_list ); // WPCS: XSS OK.
+				printf( '<span class="tags-links">' . esc_html__( 'Tagged %1$s', 'imaga' ) . '</span>', $tags_list ); // WPCS: XSS OK.
 			}
 		}
 
 		if ( ! is_single() && ! post_password_required() && ( comments_open() || get_comments_number() ) ) {
 			echo '<span class="comments-link">';
-			comments_popup_link( esc_html__( 'Leave a comment', '_s' ), esc_html__( '1 Comment', '_s' ), esc_html__( '% Comments', '_s' ) );
+			comments_popup_link( esc_html__( 'Leave a comment', 'imaga' ), esc_html__( '1 Comment', 'imaga' ), esc_html__( '% Comments', 'imaga' ) );
 			echo '</span>';
 		}
 
 		edit_post_link(
 			sprintf(
 				/* translators: %s: Name of current post */
-				esc_html__( 'Edit %s', '_s' ),
+				esc_html__( 'Edit %s', 'imaga' ),
 				the_title( '<span class="screen-reader-text">"', '"</span>', false )
 			),
 			'<span class="edit-link">',
@@ -93,8 +93,8 @@ endif;
  *
  * @author WDS
  */
-function _s_display_svg( $args = array() ) {
-	echo _s_get_svg( $args ); // WPCS XSS Ok.
+function imaga_display_svg( $args = array() ) {
+	echo imaga_get_svg( $args ); // WPCS XSS Ok.
 }
 
 /**
@@ -104,16 +104,16 @@ function _s_display_svg( $args = array() ) {
  * @author WDS
  * @return string
  */
-function _s_get_svg( $args = array() ) {
+function imaga_get_svg( $args = array() ) {
 
 	// Make sure $args are an array.
 	if ( empty( $args ) ) {
-		return esc_html__( 'Please define default parameters in the form of an array.', '_s' );
+		return esc_html__( 'Please define default parameters in the form of an array.', 'imaga' );
 	}
 
 	// Define an icon.
 	if ( false === array_key_exists( 'icon', $args ) ) {
-		return esc_html__( 'Please define an SVG icon filename.', '_s' );
+		return esc_html__( 'Please define an SVG icon filename.', 'imaga' );
 	}
 
 	// Set defaults.
@@ -157,14 +157,14 @@ function _s_get_svg( $args = array() ) {
 
 	<svg
 	<?php
-		echo _s_get_the_content( $height ); // WPCS XSS OK.
-		echo _s_get_the_content( $width ); // WPCS XSS OK.
-		echo _s_get_the_content( $fill ); // WPCS XSS OK.
+		echo imaga_get_the_content( $height ); // WPCS XSS OK.
+		echo imaga_get_the_content( $width ); // WPCS XSS OK.
+		echo imaga_get_the_content( $fill ); // WPCS XSS OK.
 	?>
 		class="icon icon-<?php echo esc_attr( $args['icon'] ); ?>"
 	<?php
-		echo _s_get_the_content( $aria_hidden ); // WPCS XSS OK.
-		echo _s_get_the_content( $aria_labelledby ); // WPCS XSS OK.
+		echo imaga_get_the_content( $aria_hidden ); // WPCS XSS OK.
+		echo imaga_get_the_content( $aria_labelledby ); // WPCS XSS OK.
 	?>
 		role="img">
 		<title id="<?php echo esc_attr( $block_title_id ); ?>">
@@ -204,7 +204,7 @@ function _s_get_svg( $args = array() ) {
  * @author WDS
  * @return string
  */
-function _s_get_the_title( $args = array() ) {
+function imaga_get_the_title( $args = array() ) {
 
 	// Set defaults.
 	$defaults = array(
@@ -227,7 +227,7 @@ function _s_get_the_title( $args = array() ) {
  * @author WDS
  * @return string
  */
-function _s_get_the_excerpt( $args = array() ) {
+function imaga_get_the_excerpt( $args = array() ) {
 
 	// Set defaults.
 	$defaults = array(
@@ -249,17 +249,17 @@ function _s_get_the_excerpt( $args = array() ) {
  * @author WDS
  * @return bool
  */
-function _s_display_copyright_text() {
+function imaga_display_copyright_text() {
 
 	// Grab our customizer settings.
-	$copyright_text = get_theme_mod( '_s_copyright_text' );
+	$copyright_text = get_theme_mod( 'imaga_copyright_text' );
 
 	// Stop if there's nothing to display.
 	if ( ! $copyright_text ) {
 		return false;
 	}
 
-	echo _s_get_the_content( do_shortcode( $copyright_text ) ); // phpcs: xss ok.
+	echo imaga_get_the_content( do_shortcode( $copyright_text ) ); // phpcs: xss ok.
 }
 
 /**
@@ -268,7 +268,7 @@ function _s_display_copyright_text() {
  * @author WDS
  * @return string
  */
-function _s_get_twitter_share_url() {
+function imaga_get_twitter_share_url() {
 	return add_query_arg(
 		array(
 			'text' => rawurlencode( html_entity_decode( get_the_title() ) ),
@@ -284,7 +284,7 @@ function _s_get_twitter_share_url() {
  * @author WDS
  * @return string
  */
-function _s_get_facebook_share_url() {
+function imaga_get_facebook_share_url() {
 	return add_query_arg( 'u', rawurlencode( get_the_permalink() ), 'https://www.facebook.com/sharer/sharer.php' );
 }
 
@@ -294,7 +294,7 @@ function _s_get_facebook_share_url() {
  * @author WDS
  * @return string
  */
-function _s_get_linkedin_share_url() {
+function imaga_get_linkedin_share_url() {
 	return add_query_arg(
 		array(
 			'title' => rawurlencode( html_entity_decode( get_the_title() ) ),
@@ -309,7 +309,7 @@ function _s_get_linkedin_share_url() {
  *
  * @author WDS
  */
-function _s_display_social_network_links() {
+function imaga_display_social_network_links() {
 
 	// Create an array of our social links for ease of setup.
 	// Change the order of the networks in this array to change the output order.
@@ -322,7 +322,7 @@ function _s_display_social_network_links() {
 		foreach ( $social_networks as $network ) :
 
 			// Look for the social network's URL.
-			$network_url = get_theme_mod( '_s_' . $network . '_link' );
+			$network_url = get_theme_mod( 'imaga_' . $network . '_link' );
 
 			// Only display the list item if a URL is set.
 			if ( ! empty( $network_url ) ) :
@@ -330,7 +330,7 @@ function _s_display_social_network_links() {
 				<li class="social-icon <?php echo esc_attr( $network ); ?>">
 					<a href="<?php echo esc_url( $network_url ); ?>">
 						<?php
-						_s_display_svg(
+						imaga_display_svg(
 							array(
 								'icon' => $network . '-square',
 							)
@@ -338,7 +338,7 @@ function _s_display_social_network_links() {
 						?>
 						<span class="screen-reader-text">
 						<?php
-							echo /* translators: the social network name */ sprintf( esc_html( 'Link to %s', '_s' ), ucwords( esc_html( $network ) ) ); // WPCS: XSS OK.
+							echo /* translators: the social network name */ sprintf( esc_html( 'Link to %s', 'imaga' ), ucwords( esc_html( $network ) ) ); // WPCS: XSS OK.
 						?>
 						</span>
 					</a>
@@ -357,7 +357,7 @@ function _s_display_social_network_links() {
  * @author WDS
  * @param array $args Card defaults.
  */
-function _s_display_card( $args = array() ) {
+function imaga_display_card( $args = array() ) {
 
 	// Setup defaults.
 	$defaults = array(
@@ -377,7 +377,7 @@ function _s_display_card( $args = array() ) {
 			<?php if ( $args['image'] ) : ?>
 				<?php echo wp_kses_post( $args['image'] ); ?>
 			<?php else : ?>
-				<img src="<?php echo esc_url( get_stylesheet_directory_uri() ); ?>/assets/images/placeholder.png" class="card-image" loading="lazy" alt="<?php echo sprintf( esc_attr( 'Featured image for %s', '_s' ), esc_attr( $args['title'] ) ); ?>">
+				<img src="<?php echo esc_url( get_stylesheet_directory_uri() ); ?>/assets/images/placeholder.png" class="card-image" loading="lazy" alt="<?php echo sprintf( esc_attr( 'Featured image for %s', 'imaga' ), esc_attr( $args['title'] ) ); ?>">
 			<?php endif; ?>
 		</a>
 
@@ -392,7 +392,7 @@ function _s_display_card( $args = array() ) {
 		<?php endif; ?>
 
 		<?php if ( $args['url'] ) : ?>
-			<a class="button button-card" href="<?php echo esc_url( $args['url'] ); ?>"><?php esc_html_e( 'Read More', '_s' ); ?></a>
+			<a class="button button-card" href="<?php echo esc_url( $args['url'] ); ?>"><?php esc_html_e( 'Read More', 'imaga' ); ?></a>
 		<?php endif; ?>
 
 		</div><!-- .card-section -->
@@ -407,10 +407,10 @@ function _s_display_card( $args = array() ) {
  * @author Corey Collins
  * @return string
  */
-function _s_display_header_button() {
+function imaga_display_header_button() {
 
 	// Get our button setting.
-	$button_setting = get_theme_mod( '_s_header_button' );
+	$button_setting = get_theme_mod( 'imaga_header_button' );
 
 	// If we have no button displayed, don't display the markup.
 	if ( 'none' === $button_setting ) {
@@ -418,18 +418,18 @@ function _s_display_header_button() {
 	}
 
 	// Grab our button and text values.
-	$button_url  = get_theme_mod( '_s_header_button_url' );
-	$button_text = get_theme_mod( '_s_header_button_text' );
+	$button_url  = get_theme_mod( 'imaga_header_button_url' );
+	$button_text = get_theme_mod( 'imaga_header_button_text' );
 	?>
 	<div class="site-header-action">
 		<?php
 		// If we're doing a URL, just make this LOOK like a button but be a link.
 		if ( 'link' === $button_setting && $button_url ) :
 		?>
-			<a href="<?php echo esc_url( $button_url ); ?>" class="button button-link"><?php echo esc_html( $button_text ?: __( 'More Information', '_s' ) ); ?></a>
+			<a href="<?php echo esc_url( $button_url ); ?>" class="button button-link"><?php echo esc_html( $button_text ?: __( 'More Information', 'imaga' ) ); ?></a>
 		<?php else : ?>
-			<button type="button" class="cta-button" aria-expanded="false" aria-label="<?php esc_html_e( 'Search', '_s' ); ?>">
-				<?php esc_html_e( 'Search', '_s' ); ?>
+			<button type="button" class="cta-button" aria-expanded="false" aria-label="<?php esc_html_e( 'Search', 'imaga' ); ?>">
+				<?php esc_html_e( 'Search', 'imaga' ); ?>
 			</button>
 			<div class="form-container" aria-hidden="true">
 				<?php get_search_form(); ?>
@@ -448,7 +448,7 @@ function _s_display_header_button() {
  * @return void.
  * @author Corey Collins
  */
-function _s_display_numeric_pagination( $args = array() ) {
+function imaga_display_numeric_pagination( $args = array() ) {
 
 	// Set defaults.
 	$defaults = array(
@@ -465,7 +465,7 @@ function _s_display_numeric_pagination( $args = array() ) {
 	}
 	?>
 
-	<nav class="pagination-container container" aria-label="<?php esc_html_e( 'numeric pagination', '_s' ); ?>">
+	<nav class="pagination-container container" aria-label="<?php esc_html_e( 'numeric pagination', 'imaga' ); ?>">
 		<?php echo paginate_links( $args ); // WPCS: XSS OK. ?>
 	</nav>
 
@@ -480,7 +480,7 @@ function _s_display_numeric_pagination( $args = array() ) {
  * @author WDS
  * @author Corey Collins
  */
-function _s_display_mobile_menu() {
+function imaga_display_mobile_menu() {
 
 	// Bail if no mobile or primary menus are set.
 	if ( ! has_nav_menu( 'mobile' ) && ! has_nav_menu( 'primary' ) ) {
@@ -496,8 +496,8 @@ function _s_display_mobile_menu() {
 	}
 	?>
 	<div class="off-canvas-screen"></div>
-	<nav class="off-canvas-container" aria-label="<?php esc_html_e( 'Mobile Menu', '_s' ); ?>" aria-hidden="true" tabindex="-1">
-		<button type="button" class="off-canvas-close" aria-label="<?php esc_html_e( 'Close Menu', '_s' ); ?>">
+	<nav class="off-canvas-container" aria-label="<?php esc_html_e( 'Mobile Menu', 'imaga' ); ?>" aria-hidden="true" tabindex="-1">
+		<button type="button" class="off-canvas-close" aria-label="<?php esc_html_e( 'Close Menu', 'imaga' ); ?>">
 			<span class="close"></span>
 		</button>
 		<?php
@@ -530,7 +530,7 @@ function _s_display_mobile_menu() {
  *
  * @return bool
  */
-function _s_has_array_key( $key, $array = array() ) {
+function imaga_has_array_key( $key, $array = array() ) {
 
 	if ( ! is_array( $array ) || ( ! $array || ! $key ) ) {
 		return false;
